@@ -11,7 +11,7 @@ provider: ec2
 providers:
   ec2:
     key-name: flintrock-sa-east-1
-    identity-file: flintrock-sa-east-1.pem
+    identity-file: keys/flintrock-sa-east-1.pem
     instance-type: t3.small
     region: sa-east-1
     ami: ami-008609d8cd0b79ced
@@ -20,15 +20,12 @@ providers:
     tenancy: default
     ebs-optimized: yes
     instance-initiated-shutdown-behavior: terminate
-    # user-data: /path/to/userdata/script
-    # authorize-access-from:
-    #   - 10.0.0.42/32
-    #   - sg-xyz4654564xyz
+    authorize-access-from:
+      - 0.0.0.0/0
 
 launch:
   num-slaves: 4
   install-hdfs: True
   install-spark: True
-  # java-version: 8
 
 debug: true

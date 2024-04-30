@@ -3,10 +3,7 @@ from pyspark.sql.functions import unix_timestamp, monotonically_increasing_id, s
 from pyspark.sql.types import StructType, StructField, StringType, LongType, IntegerType, DoubleType
 
 # Create a SparkSession
-spark = SparkSession \
-    .builder \
-    .config("spark.executor.instances", "4") \
-    .getOrCreate()
+spark = SparkSession.builder.getOrCreate()
 
 # Create the data schema
 schema = StructType([
@@ -49,21 +46,21 @@ df = spark.read.csv("/data/vlt_observations.csv", header=False, schema=schema)
 #df = df.withColumn("oid", monotonically_increasing_id())
 
 # Parse columns
-df = df.withColumn("obs_timestamp", unix_timestamp(df["obs_timestamp"], "yyyy MMM d HH:mm:ss").cast(LongType())) \
-    .withColumn("release_date", unix_timestamp(df["release_date"], "MMM d yyyy").cast(LongType())) \
-    .withColumn("template_start", unix_timestamp(split(df["template_start"], "\\.")[0], "yyyy-MM-dd'T'HH:mm:ss").cast(LongType())) \
-    .withColumn("exposition_time", col("exposition_time").cast("float")) \
-    .withColumn("filter_lambda_min", col("filter_lambda_min").cast("float")) \
-    .withColumn("filter_lambda_max", col("filter_lambda_max").cast("float")) \
-    .withColumn("obs_mjd", col("obs_mjd").cast("float")) \
-    .withColumn("airmass", col("airmass").cast("float")) \
-    .withColumn("seeing", col("seeing").cast("float"))
+# df = df.withColumn("obs_timestamp", unix_timestamp(df["obs_timestamp"], "yyyy MMM d HH:mm:ss").cast(LongType())) \
+#     .withColumn("release_date", unix_timestamp(df["release_date"], "MMM d yyyy").cast(LongType())) \
+#     .withColumn("template_start", unix_timestamp(split(df["template_start"], "\\.")[0], "yyyy-MM-dd'T'HH:mm:ss").cast(LongType())) \
+#     .withColumn("exposition_time", col("exposition_time").cast("float")) \
+#     .withColumn("filter_lambda_min", col("filter_lambda_min").cast("float")) \
+#     .withColumn("filter_lambda_max", col("filter_lambda_max").cast("float")) \
+#     .withColumn("obs_mjd", col("obs_mjd").cast("float")) \
+#     .withColumn("airmass", col("airmass").cast("float")) \
+#     .withColumn("seeing", col("seeing").cast("float"))
 
 # Show the DataFrame
 #selected_df = df.select("release_date", "template_start", "airmass")
 #selected_df.show()
 
 # Store the data
-#df.write.mode("overwrite").parquet("/data/vlt_observations.parquet")
-object_counts = df.groupBy("object").count()
-object_counts.show()
+df.write.mode("overwrite").parquet("/data/vlt_observations.parquet")
+# object_counts = df.groupBy("object").count()
+# object_counts.show()
