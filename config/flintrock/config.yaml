@@ -12,19 +12,19 @@ providers:
   ec2:
     key-name: flintrock-sa-east-1
     identity-file: keys/flintrock-sa-east-1.pem
-    instance-type: t3.small
+    instance-type: t2.micro
     region: sa-east-1
-    ami: ami-008609d8cd0b79ced
+    ami: ami-0c89d527a4e045588
     user: ec2-user
     instance-profile-name: flintrock
     tenancy: default
-    ebs-optimized: yes
+    min-root-ebs-size-gb: 8
     instance-initiated-shutdown-behavior: terminate
     authorize-access-from:
       - 0.0.0.0/0
 
 launch:
-  num-slaves: 4
+  num-slaves: 8
   install-hdfs: True
   install-spark: True
 
