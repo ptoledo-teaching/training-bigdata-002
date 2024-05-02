@@ -42,25 +42,21 @@ schema = StructType([
 ])
 
 # Read the CSV file
-df = spark.read.csv("/data/vlt_observations.csv", header=False, schema=schema)
-#df = df.withColumn("oid", monotonically_increasing_id())
+df = spark.read.csv("s3a://utfsm-datasets-inf356/vlt_observations/vlt_observations_000.csv", header=False, schema=schema)
 
-# Parse columns
-# df = df.withColumn("obs_timestamp", unix_timestamp(df["obs_timestamp"], "yyyy MMM d HH:mm:ss").cast(LongType())) \
-#     .withColumn("release_date", unix_timestamp(df["release_date"], "MMM d yyyy").cast(LongType())) \
-#     .withColumn("template_start", unix_timestamp(split(df["template_start"], "\\.")[0], "yyyy-MM-dd'T'HH:mm:ss").cast(LongType())) \
-#     .withColumn("exposition_time", col("exposition_time").cast("float")) \
-#     .withColumn("filter_lambda_min", col("filter_lambda_min").cast("float")) \
-#     .withColumn("filter_lambda_max", col("filter_lambda_max").cast("float")) \
-#     .withColumn("obs_mjd", col("obs_mjd").cast("float")) \
-#     .withColumn("airmass", col("airmass").cast("float")) \
-#     .withColumn("seeing", col("seeing").cast("float"))
+# Numbering columns
+df = df.withColumn("oid", monotonically_increasing_id())
 
-# Show the DataFrame
-#selected_df = df.select("release_date", "template_start", "airmass")
-#selected_df.show()
+# Parse columns - simple types
+df = df.withColumn("exposition_time", col("exposition_time").cast("float")) 
+df = df.withColumn("filter_lambda_min", col("filter_lambda_min").cast("float")) 
+df = df.withColumn("filter_lambda_max", col("filter_lambda_max").cast("float")) 
+df = df.withColumn("obs_mjd", col("obs_mjd").cast("float")) 
+df = df.withColumn("airmass", col("airmass").cast("float")) 
+df = df.withColumn("seeing", col("seeing").cast("float"))
 
 # Store the data
-df.write.mode("overwrite").parquet("/data/vlt_observations.parquet")
-# object_counts = df.groupBy("object").count()
-# object_counts.show()
+# You must create an s3 bucket in your aws account with the name XXXXXXXXXX-inf356 where
+# XXXXXXXXXX is your student number without dots or dashes. E.G. 123.456.789-0 => 1234567890.
+# You must replace the XXXXXXXXXX in the following line
+df.write.mode("overwrite").csv("s3a://XXXXXXXXXX-inf356/vlt_observations_000.csv")
