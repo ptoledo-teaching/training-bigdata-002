@@ -2,9 +2,6 @@ services:
   spark:
     version: 3.5.1
     download-source: "s3://utfsm-inf356-releases/spark-3.5.1/"
-  hdfs:
-    version: 3.3.6
-    download-source: "s3://utfsm-inf356-releases/hadoop-3.3.6/"
 
 provider: ec2
 
@@ -25,7 +22,5 @@ providers:
 
 launch:
   num-slaves: 8
-  install-hdfs: True
-  install-spark: True
 
 debug: true
