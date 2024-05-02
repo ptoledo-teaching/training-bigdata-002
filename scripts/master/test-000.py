@@ -1,9 +1,7 @@
 from pyspark.sql import SparkSession
 
 # Initialize Spark session
-spark = SparkSession.builder \
-    .appName("DistributedCalculationsExample") \
-    .getOrCreate()
+spark = SparkSession.builder.getOrCreate()
 
 # Create a list of numbers
 numbers = range(0, 1000000)
