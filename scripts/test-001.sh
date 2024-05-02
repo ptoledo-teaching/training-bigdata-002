@@ -1,0 +1,1 @@
+submit.sh ~/scripts/test-001.py > ~/scripts/test-001.log

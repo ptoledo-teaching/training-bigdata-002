@@ -1,1 +1,0 @@
-submit.sh ~/scripts/test-001.py
