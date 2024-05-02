@@ -8,7 +8,7 @@ provider: ec2
 providers:
   ec2:
     key-name: flintrock-sa-east-1
-    identity-file: keys/flintrock-sa-east-1.pem
+    identity-file: credentials/keys/flintrock-sa-east-1.pem
     instance-type: t2.micro
     region: sa-east-1
     ami: ami-0c89d527a4e045588
