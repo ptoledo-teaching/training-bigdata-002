@@ -12,6 +12,7 @@ scp -i keys/flintrock-sa-east-1.pem config/hadoop/* ec2-user@$IP_MASTER:~/hadoop
 ssh -i keys/flintrock-sa-east-1.pem -T ec2-user@$IP_MASTER << EOF
     sudo yum -y -q update
     echo 'export PATH=\$PATH:~/scripts' >> ~/.bashrc
+    mkdir -p ~/data
     chmod +x ~/scripts/*.sh
     cp ~/hadoop/etc/hadoop/log4j.properties ~/hadoop/conf/
     echo "### Configuring workers"
