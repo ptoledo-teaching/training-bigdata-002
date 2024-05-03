@@ -114,7 +114,13 @@ I could be possible that after the cluster is destroyed certain ec2 security gro
 
 ## Usage in master host
 
-This tool provides the commands **submit.sh** and **get_usage.sh** to be used in the cluster master machine. These commands are stored in the **~/scripts** folder and are available directly at any path given that the scripts folder has been added to the environment path.
+This tool provides the commands **submit.sh**, **clean.sh** and **get_usage.sh** to be used in the cluster master machine. These commands are stored in the **~/scripts** folder and are available directly at any path given that the scripts folder has been added to the environment path.
+
+### clean.sh
+
+With the executin of spark, the workers start to accumulate the history of previous executions in **~/spark/work**. This could lead to an exhaustion of disk that prevents new executions.
+
+This command goes through each worker and empty the work folder. In the process shows the initial and final disk use in the machine.
 
 ### get_usage.sh
 
