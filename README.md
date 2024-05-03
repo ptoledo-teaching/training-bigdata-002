@@ -120,7 +120,7 @@ This tool provides the commands **submit.sh**, **clean.sh** and **get_usage.sh**
 
 With the executin of spark, the workers start to accumulate the history of previous executions in **~/spark/work**. This could lead to an exhaustion of disk that prevents new executions.
 
-This command goes through each worker and empty the work folder. In the process shows the initial and final disk use in the machine.
+This command goes through each worker and deletes all the jar files in the work folder, in this way the logs of previous executions (with a typical small size) are still available. In the process shows the initial and final disk use in the machine.
 
 ### get_usage.sh
 
