@@ -11,7 +11,7 @@ providers:
     identity-file: credentials/keys/flintrock-sa-east-1.pem
     instance-type: t2.micro
     region: sa-east-1
-    ami: ami-0c89d527a4e045588
+    ami: ami-008609d8cd0b79ced
     user: ec2-user
     instance-profile-name: flintrock
     tenancy: default
@@ -21,6 +21,6 @@ providers:
       - 0.0.0.0/0
 
 launch:
-  num-slaves: 8
+  num-slaves: 2
 
 debug: true
