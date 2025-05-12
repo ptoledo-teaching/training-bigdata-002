@@ -37,13 +37,13 @@ sudo apt install python3-boto3
 
 ### Flintrock
 
-Install Flintrock using pipx:
+Install Flintrock using pipx (if you do not have pipx the procedure to install it is just below):
 
 ```bash
 pipx install flintrock
 ```
 
-Install pipx on Ubuntu (24.04 or above):
+Install pipx on Ubuntu (23.04 or above):
 
 ```bash
 sudo apt update
