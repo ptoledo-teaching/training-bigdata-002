@@ -122,7 +122,7 @@ You may see residual EC2 security groups named `flintrock` or `flintrock-spark-c
 
 ## Usage on Master Host
 
-The `~/scripts/` directory contains the following commands:
+The `scripts` directory contains the following commands:
 
 ### clean.sh
 
