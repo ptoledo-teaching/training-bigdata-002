@@ -64,13 +64,6 @@ More information: https://pipx.pypa.io/stable/.
 
 > ❗ **Security Warning:** Never store `.pem` or credential files in a public repository. The `.gitignore` is configured to ignore any `.pem` files.
 
-### AWS User Credentials
-
-1. Go to the [IAM Users console](https://us-east-1.console.aws.amazon.com/iam/home?region=us-east-1#/users) and create a new programmatic user (e.g., **flintrock**).
-2. Assign the **AdministratorAccess** policy directly.
-3. After creation, go to the **Security credentials** tab → **Access keys** → Create a new access key.
-4. In `credentials/aws/`, copy `credentials.sh.template` to `credentials.sh` and add the generated key ID and secret.
-
 ### AWS Role for EC2
 
 1. Navigate to the [IAM Roles console](https://us-east-1.console.aws.amazon.com/iam/home?region=us-east-1#/roles).
@@ -87,6 +80,23 @@ More information: https://pipx.pypa.io/stable/.
 3. Use default settings.
 
 Update the `bucket` variable in `scripts/test-001.py` with your bucket name.
+
+### AWS User Credentials
+
+#### If you are using AWS Academy
+
+1. In `credentials/aws/`, copy `credentials.sh.template` to `credentials.sh`
+2. Go to your lab initialization page in Canvas
+3. Click on **AWS Details**
+4. Complete the `credentials.sh` file with the informations that appear under **AWS CLI**
+
+#### If you are using a personal AWS Account
+
+1. Go to the [IAM Users console](https://us-east-1.console.aws.amazon.com/iam/home?region=us-east-1#/users) and create a new programmatic user (e.g., **flintrock**).
+2. Assign the **AdministratorAccess** policy directly.
+3. After creation, go to the **Security credentials** tab → **Access keys** → Create a new access key.
+4. In `credentials/aws/`, copy `credentials.sh.template` to `credentials.sh` and add the generated key ID and secret.
+5. Delete the line `export AWS_SESSION_TOKEN=`
 
 ## Usage on User Host
 
