@@ -60,7 +60,7 @@ More information: https://pipx.pypa.io/stable/.
 ### EC2 Key Pair
 
 1. Go to the [EC2 Key Pairs console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#KeyPairs:) and create a new key pair named **flintrock-us-east-1**.
-2. The key should be of **.pem** type. Save the private key in a `key` folder inside the `credentials` directory.
+2. The key should be of **.pem** type. Save the private key in a `keys` folder inside the `credentials` directory.
 
 > ❗ **Security Warning:** Never store `.pem` or credential files in a public repository. The `.gitignore` is configured to ignore any `.pem` files.
 
