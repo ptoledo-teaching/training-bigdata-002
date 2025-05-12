@@ -13,7 +13,6 @@ providers:
     region: us-east-1
     ami: ami-085386e29e44dacd7
     user: ec2-user
-    instance-profile-name: flintrock
     tenancy: default
     min-root-ebs-size-gb: 8
     instance-initiated-shutdown-behavior: terminate
