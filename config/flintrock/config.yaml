@@ -1,7 +1,7 @@
 services:
   spark:
-    version: 3.5.1
-    download-source: "s3://utfsm-inf356-releases/spark-3.5.1/"
+    version: 3.5.5
+    download-source: "s3://utfsm-inf356-releases/spark-3.5.5/"
 
 provider: ec2
 
@@ -10,8 +10,8 @@ providers:
     key-name: flintrock-sa-east-1
     identity-file: credentials/keys/flintrock-sa-east-1.pem
     instance-type: t2.micro
-    region: sa-east-1
-    ami: ami-008609d8cd0b79ced
+    region: us-east-1
+    ami: ami-085386e29e44dacd7
     user: ec2-user
     instance-profile-name: flintrock
     tenancy: default
