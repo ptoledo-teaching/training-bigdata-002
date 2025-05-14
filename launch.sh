@@ -12,6 +12,7 @@ scp -i credentuals/aws/credentials.sh ec2-user@$IP_MASTER:~/scripts
 ssh -i credentials/keys/flintrock-us-east-1.pem -T ec2-user@$IP_MASTER << EOF
     echo "### Configuring master node"
     sudo yum -y -q update
+    chmod +x ~/scripts/*.sh
     echo 'export PATH=\$PATH:~/scripts' >> ~/.bashrc
     chmod +x ~/scripts/*.sh
     echo "### Configuring worker nodes"
