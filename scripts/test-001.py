@@ -73,9 +73,9 @@ df_1 = df_1.withColumn("seeing", col("seeing").cast("float"))
 
 # Store the data in user bucket
 print(f"Writting file as {filename}.parsed.csv into {bucket} bucket")
-df_1.write.mode("overwrite").csv(f"s3a://{bucket}/vlt_observations_000.parsed.csv")
+df_1.write.mode("overwrite").csv(f"s3a://{bucket}/{filename}.parsed.csv")
 print(f"Writting file as {filename}.parsed.parquet into {bucket} bucket")
-df_1.write.mode("overwrite").parquet(f"s3a://{bucket}/vlt_observations_000.parsed.parquet")
+df_1.write.mode("overwrite").parquet(f"s3a://{bucket}/{filename}.parsed.parquet")
 
 # Stop Spark session
 spark.stop()
