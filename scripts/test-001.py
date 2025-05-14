@@ -61,7 +61,7 @@ df_0.write.mode("overwrite").parquet(f"s3a://{bucket}/{filename}.parquet")
 
 # Read the data and parse floats
 print(f"Reading file {filename}.parquet from {bucket} bucket")
-df_1 = spark.read.parquet(f"s3a://{bucket}/vlt_observations_000.parquet")
+df_1 = spark.read.parquet(f"s3a://{bucket}/{filename}.parquet")
 print(f"    - {df_1.count()} rows read")
 print(f"    - Parsing float columns")
 df_1 = df_1.withColumn("exposition_time", col("exposition_time").cast("float")) 
