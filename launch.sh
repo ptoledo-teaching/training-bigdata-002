@@ -8,6 +8,7 @@ ssh -i credentials/keys/flintrock-us-east-1.pem -o StrictHostKeyChecking=no ec2-
 echo "### Transfering files to master node"
 scp -i credentials/keys/flintrock-us-east-1.pem scripts/* ec2-user@$IP_MASTER:~/scripts
 scp -i credentials/keys/flintrock-us-east-1.pem config/spark/* ec2-user@$IP_MASTER:~/spark/conf/
+scp -i credentuals/aws/credentials.sh ec2-user@$IP_MASTER:~/scripts
 ssh -i credentials/keys/flintrock-us-east-1.pem -T ec2-user@$IP_MASTER << EOF
     echo "### Configuring master node"
     sudo yum -y -q update
