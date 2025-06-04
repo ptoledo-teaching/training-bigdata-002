@@ -60,6 +60,7 @@ More information: https://pipx.pypa.io/stable/.
 ### EC2 Key Pair
 
 > ⚠️ **Important:** Remember to set the key file permissions to 400 or 600
+
 > ❗ **Security Warning:** Never store `.pem` or credential files in a public repository. The `.gitignore` is configured to ignore any `.pem` files.
 
 1. Go to the [EC2 Key Pairs console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#KeyPairs:) and create a new key pair named **flintrock-us-east-1**.
