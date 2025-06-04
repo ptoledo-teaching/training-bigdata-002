@@ -67,6 +67,8 @@ More information: https://pipx.pypa.io/stable/.
 
 ### AWS Role for EC2
 
+> ⚠️ **Important:** This is not required if you are using an AWS Academy account
+> 
 1. Navigate to the [IAM Roles console](https://us-east-1.console.aws.amazon.com/iam/home?region=us-east-1#/roles).
 2. Create a new role:
    - **Trusted entity type**: AWS service
